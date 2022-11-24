@@ -1,0 +1,194 @@
+<div class="container pt-4">
+  <div class="row p-lg-5 mt-lg-3 py-2">
+    <div class="d-none d-lg-block col-lg-6 p-0">
+      <img src="assets/images/gaming.jpg" class="w-100 h-100" alt="gaming" />
+    </div>
+    <div class="col-lg-6 bg-black bg-opacity-25 py-4 px-4 text-center">
+      <h2 class="h3 mt-2 mb-4 text-muted">Create My Account!</h2>
+
+      <form
+        class="row gy-2"
+        [formGroup]="signupForm"
+        (ngSubmit)="submitSignupForm(signupForm)"
+      >
+        <div class="col-6">
+          <input
+            type="text"
+            formControlName="first_name"
+            class="form-control bg-black bg-opacity-50 border-0 text-white mb-2"
+            placeholder="First Name"
+          />
+          <div
+            *ngIf="
+              signupForm.controls['first_name'].errors &&
+              signupForm.controls['first_name']?.touched
+            "
+          >
+            <p
+              *ngIf="signupForm.controls['first_name'].errors?.['required']"
+              class="alert alert-danger p-1"
+            >
+              First name is required
+            </p>
+            <p
+              *ngIf="signupForm.controls['first_name'].errors?.['minlength']"
+              class="alert alert-danger p-1"
+            >
+              First name min length is 3
+            </p>
+            <p
+              *ngIf="signupForm.controls['first_name'].errors?.['maxlength']"
+              class="alert alert-danger p-1"
+            >
+              First name max length is 20
+            </p>
+          </div>
+        </div>
+        <div class="col-6">
+          <input
+            type="text"
+            formControlName="last_name"
+            class="form-control bg-black bg-opacity-50 border-0 text-white mb-2"
+            placeholder="Last Name"
+          />
+          <div
+            *ngIf="
+              signupForm.controls['last_name'].errors &&
+              signupForm.controls['last_name']?.touched
+            "
+          >
+            <p
+              *ngIf="signupForm.controls['last_name'].errors?.['required']"
+              class="alert alert-danger p-1"
+            >
+              Last name is required
+            </p>
+            <p
+              *ngIf="signupForm.controls['last_name'].errors?.['minlength']"
+              class="alert alert-danger p-1"
+            >
+              Last name min length is 3
+            </p>
+            <p
+              *ngIf="signupForm.controls['last_name'].errors?.['maxlength']"
+              class="alert alert-danger p-1"
+            >
+              Last name max length is 20
+            </p>
+          </div>
+        </div>
+        <div class="col-12">
+          <input
+            type="email"
+            formControlName="email"
+            class="form-control bg-black bg-opacity-50 border-0 text-white mb-2"
+            placeholder="Email"
+          />
+          <div
+            *ngIf="
+              signupForm.controls['email'].errors &&
+              signupForm.controls['email']?.touched
+            "
+          >
+            <p
+              *ngIf="signupForm.controls['email'].errors?.['required']"
+              class="alert alert-danger p-1"
+            >
+              Email is required
+            </p>
+            <p
+              *ngIf="signupForm.controls['email'].errors?.['email']"
+              class="alert alert-danger p-1"
+            >
+              Email must be valid email
+            </p>
+          </div>
+        </div>
+        <div class="col-12">
+          <input
+            type="password"
+            formControlName="password"
+            class="form-control bg-black bg-opacity-50 border-0 text-white mb-2"
+            placeholder="Password"
+          />
+          <div
+            *ngIf="
+              signupForm.controls['password'].errors &&
+              signupForm.controls['password']?.touched
+            "
+          >
+            <p
+              *ngIf="signupForm.controls['password'].errors?.['required']"
+              class="alert alert-danger p-1"
+            >
+              password is required
+            </p>
+            <p
+              *ngIf="signupForm.controls['password'].errors?.['pattern']"
+              class="alert alert-danger p-1"
+            >
+              password must be start with capital letter
+            </p>
+          </div>
+        </div>
+        <div class="col-12 mb-3">
+          <input
+            type="number"
+            formControlName="age"
+            class="form-control bg-black bg-opacity-50 border-0 text-white mb-2"
+            placeholder="Age"
+          />
+          <div
+            *ngIf="
+              signupForm.controls['age'].errors &&
+              signupForm.controls['age']?.touched
+            "
+          >
+            <p
+              *ngIf="signupForm.controls['age'].errors?.['required']"
+              class="alert alert-danger p-1"
+            >
+              Age is required
+            </p>
+            <p
+              *ngIf="signupForm.controls['age'].errors?.['min']"
+              class="alert alert-danger p-1"
+            >
+              Min age is 16
+            </p>
+            <p
+              *ngIf="signupForm.controls['age'].errors?.['max']"
+              class="alert alert-danger p-1"
+            >
+              Max age is 80
+            </p>
+          </div>
+        </div>
+        <div class="col-12">
+          <button
+            [disabled]="signupForm.invalid"
+            type="submit"
+            class="btn btn-secondary w-100"
+          >
+            Signup
+          </button>
+        </div>
+        <div class="col-12">
+          <p class="alert alert-danger p-1" *ngIf="signupErrorMsg">
+            {{ signupErrorMsg }}
+          </p>
+        </div>
+      </form>
+      <p class="text-decoration-none mt-3 text-muted">
+        This site is protected by reCAPTCHA and the Google
+        <a routerLink="/login" class="text-muted">Privacy Policy</a> and
+        <a routerLink="/login" class="text-muted">Terms of Service</a> apply.
+      </p>
+      <hr />
+      <p class="mt-2">
+        Already a member?
+        <a routerLink="/login" class="text-decoration-none text-info">Log In></a>
+      </p>
+    </div>
+  </div>
+</div>

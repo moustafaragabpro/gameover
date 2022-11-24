@@ -1,0 +1,36 @@
+<goc-loading-screen *ngIf="displayedGames?.length == 0"></goc-loading-screen>
+
+<div *ngIf="displayedGames?.length != 0" class="container" [class]="containerClass">
+<div class="row gy-4">
+  <div class="col-md-6 col-lg-4" *ngFor="let game of displayedGames">
+    <a [routerLink]="['/game-details' , game.id]" class="text-decoration-none">
+      <div class="card text-white shadow-lg rounded-0">
+        <img [src]="game.thumbnail" class="card-img-top rounded-0" alt="..." />
+        <div class="card-body">
+          <div class="d-flex align-items-center">
+            <h4 class="mb-0 text-truncate pe-2">{{ game.title }}</h4>
+            <span class="badge text-bg-info ms-auto p-2">Free</span>
+          </div>
+          <p class="card-text py-2 text-truncate text-white text-opacity-50">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <div class="d-flex align-items-end justify-content-between">
+            <i class="fas fa-plus-square text-white text-opacity-50 fs-4"></i>
+            <div class="d-flex align-items-center">
+              <span class="badge text-bg-secondary rounded-4 text-black me-2"
+                >{{ game.genre }}</span
+              >
+              <i *ngIf="game.platform == 'PC (Windows)'" class="fab fa-windows text-muted"></i>
+              <i *ngIf="game.platform == 'Web Browser'" class="fas fa-window-maximize text-muted"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="col-12 text-center">
+    <button *ngIf="games?.length > 15 && loadMoreBtn" (click)="loadMore()" class="btn btn-outline-secondary px-4 shadow">Load More</button>
+  </div>
+</div>
+</div>
